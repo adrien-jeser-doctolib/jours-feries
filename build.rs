@@ -1,7 +1,7 @@
 #[cfg(feature = "generate")]
 use {
     std::io::Write,
-    std::{collections::HashMap, fs::File},
+    std::{collections::BTreeMap, fs::File},
 };
 
 #[cfg(feature = "generate")]
@@ -15,7 +15,7 @@ async fn main() {
         .unwrap();
 
     // dbg!(&json.unwrap());
-    let v: HashMap<chrono::NaiveDate, String> = serde_json::from_str(&json).unwrap();
+    let v: BTreeMap<chrono::NaiveDate, String> = serde_json::from_str(&json).unwrap();
     let v = v
         .into_keys()
         .map(|f| f.to_string())
