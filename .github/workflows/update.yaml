@@ -1,0 +1,24 @@
+name: Fetch new jours feries
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * 1"
+jobs:
+  update-dep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+      - name: Fetch new jours feries
+        run: |
+          OUTPUT=src/lib.rs cargo c --features=generate
+          cargo fmt
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: Update dependencies
+          title: Fetch new jours feries
+          branch: fetch-new-jours-feries
