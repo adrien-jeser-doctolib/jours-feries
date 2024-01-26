@@ -1,15 +1,12 @@
 name: Auto-merge
 on:
   pull_request:
-    branches:
-      - fetch-jours-feries
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: github.actor == 'adrien-jeser-doctolib'
     steps:
       - uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           pull-request-number: ${{ github.event.pull_request.number }}
           merge-method: squash
