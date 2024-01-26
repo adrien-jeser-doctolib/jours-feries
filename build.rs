@@ -14,7 +14,6 @@ async fn main() {
         .await
         .unwrap();
 
-    // dbg!(&json.unwrap());
     let v: BTreeMap<chrono::NaiveDate, String> = serde_json::from_str(&json).unwrap();
     let v = v
         .into_keys()
