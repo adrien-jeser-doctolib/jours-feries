@@ -1,6 +1,6 @@
 # Jour feries
 
-French public holidays for Rust since https://calendrier.api.gouv.fr/jours-feries/metropole.json
+French public holidays for Rust from https://calendrier.api.gouv.fr/jours-feries/metropole.json
 
 In Cargo.toml
 
